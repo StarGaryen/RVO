@@ -28,8 +28,8 @@ public class Manager : MonoBehaviour {
 
         for (int i = 0; i < robots.Length; i++)
         {
-           if (robots[i].isActiveAndEnabled)
-           {
+           //if (robots[i].isActiveAndEnabled)
+          // {
                 Vector2 VA = robots[i].getVelocity();
                 Vector2 PA = robots[i].transform.position;
                 ArrayList RVO_All = new ArrayList();
@@ -72,8 +72,8 @@ public class Manager : MonoBehaviour {
                     Debug.Log(obstacles[j].name + " location " + PB);
                     BA.trans.Set(PA.x + 0.5f * (VA.x + VB.x), PA.y + 0.5f * (VA.y + VB.y));
                     BA.dist = Vector2.Distance(PA, PB);
-                    float theta_BA = Mathf.Atan2(PB.y - PA.y, PB.x - PA.y);
-                    float rad = 1.5f* obstacles[j].lossyScale.x;
+                    float theta_BA = Mathf.Atan2(PB.y - PA.y, PB.x - PA.x);
+                    float rad =0.5f* 1.5f* obstacles[j].lossyScale.x;
                     BA.avoidRadius = rad + RoboRadius;
                     if (BA.avoidRadius > BA.dist)
                     {
@@ -88,7 +88,7 @@ public class Manager : MonoBehaviour {
 
                 }
                 robots[i].setVelocity(intersect(i, RVO_All));
-            }
+          //  }
         }
             
 

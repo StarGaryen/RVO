@@ -24,8 +24,9 @@ public class Robot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sprite.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg*Mathf.Atan2(myRigidBody.velocity.y, myRigidBody.velocity.x));
         
+        
+         
     }
 
     public Vector2 computeDesiredVelocity()
@@ -69,5 +70,9 @@ public class Robot : MonoBehaviour
     {
         myRigidBody.velocity = vel;
         Debug.Log(gameObject.name+ " new velocity = " + vel);
+        sprite.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(myRigidBody.velocity.y, myRigidBody.velocity.x));
+        Vector3 scale;
+        scale.x = scale.y = scale.z = 0.3f * (myRigidBody.velocity.magnitude / VMax.magnitude);
+        sprite.localScale = scale;
     }
 }
